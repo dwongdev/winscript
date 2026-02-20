@@ -83,22 +83,11 @@ jobs:
       - name: Modify latest.json
         shell: powershell
         run: |
-          # Download the latest.json that was just uploaded
           gh release download "${{ github.ref_name }}" -p "latest.json"
-
-          # Read the content of the file
           $content = Get-Content -Path "latest.json" -Raw
-
-          # Replace the URL pattern with the correct filename
           $modified = $content -replace 'WinScript_\d+\.\d+\.\d+_x64-setup\.exe', 'winscript-installer.exe'
-
-          # Write the modified content back to the file
           $modified | Set-Content -Path "latest.json"
-
-          # Verify the change (optional)
           Get-Content -Path "latest.json"
-
-          # Upload the modified file
           gh release upload "${{ github.ref_name }}" "latest.json" --clobber
         env:
           GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}

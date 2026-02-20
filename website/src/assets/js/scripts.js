@@ -1064,6 +1064,10 @@ document.addEventListener("DOMContentLoaded", function () {
       "powershell -NoProfile -Command \"Write-Host '-- Adding End Task to Right-Click' -ForegroundColor Green\"",
       'reg add "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\TaskbarDeveloperSettings" /v "TaskbarEndTask" /t REG_DWORD /d "1" /f',
     ],
+    mpo: [
+      "powershell -NoProfile -Command \"Write-Host '-- Disabling Multiplane Overlay (MPO)' -ForegroundColor Green\"",
+      'reg add "HKLM\\SOFTWARE\\Microsoft\\Windows\\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "00000005" /f',
+    ],
     taskbarleft: [
       "powershell -NoProfile -Command \"Write-Host '-- Moving Taskbar Icons to the left' -ForegroundColor Green\"",
       'reg add "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced" /v TaskbarAl /t REG_DWORD /d 0 /f',
@@ -1214,6 +1218,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "filextensions",
     "classicmenu",
     "endtask",
+    "mpo",
     "taskbarleft",
     "stickykeys",
     "numlockstartup",

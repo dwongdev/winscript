@@ -2,7 +2,7 @@ import { writeTextFile, readTextFile, mkdir, remove, exists } from "@tauri-apps/
 import { tempDir, join, dirname } from "@tauri-apps/api/path";
 import { Command } from "@tauri-apps/plugin-shell";
 import { app } from "@tauri-apps/api";
-import { version, hostname } from "@tauri-apps/plugin-os";
+import { version } from "@tauri-apps/plugin-os";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { ask, save, open } from "@tauri-apps/plugin-dialog";
 import { check } from "@tauri-apps/plugin-updater";
@@ -167,15 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
   });
 });
-
-// Display hostname & version
-hostname()
-  .then((nameHost) => {
-    document.getElementById("hostname").textContent = nameHost;
-  })
-  .catch((error) => {
-    document.getElementById("hostname").textContent = "github.com/flick9000";
-  });
 
 async function displayVersion() {
   try {
