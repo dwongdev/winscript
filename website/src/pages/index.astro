@@ -437,21 +437,9 @@ const packageManagers = [
             description="Delay, disable, or reset updates."
             icon="/icons/telemetry/update.svg"
             tools={[
-              {
-                title: "Default Settings",
-                inputId: "defaultupdate",
-                description: "Resets Windows Update settings to default.",
-              },
-              {
-                title: "Security Updates",
-                inputId: "securityupdate",
-                description: "Delays feature updates by 1 year.",
-              },
-              {
-                title: "Disable Updates",
-                inputId: "disableupdate",
-                description: "Disables Windows updates (not recommended).",
-              },
+              { title: "Default Settings", inputId: "defaultupdate", radio: true, group: "updates" },
+              { title: "Security Updates", inputId: "securityupdate", radio: true, group: "updates" },
+              { title: "Disable Updates", inputId: "disableupdate", radio: true, group: "updates" },
             ]}
           />
         </Tab>

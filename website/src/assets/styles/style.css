@@ -34,6 +34,12 @@
   }
 }
 
+img,
+.sidebar svg {
+  user-select: none;
+  pointer-events: none;
+}
+
 html {
   scroll-behavior: smooth;
   user-select: none;
@@ -112,6 +118,7 @@ button:hover {
   font-size: 24px;
   cursor: pointer;
   z-index: 2;
+  pointer-events: all;
 }
 
 .content-entry {

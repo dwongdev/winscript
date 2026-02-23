@@ -41,7 +41,8 @@
     background-color: hsl(from var(--text) h s l / 0.025) !important;
   }
 
-  .nav-icon {
+  .nav-icon,
+  .sidebar-header img {
     filter: invert(1);
   }
 
@@ -109,6 +110,12 @@
 
 * {
   user-select: none;
+}
+
+img,
+svg {
+  user-select: none;
+  pointer-events: none;
 }
 
 html {
@@ -185,6 +192,7 @@ button:hover {
 .nav-icon {
   display: none;
   cursor: pointer;
+  pointer-events: all;
 }
 
 .content-entry {

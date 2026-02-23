@@ -146,7 +146,7 @@ function applyMica() {
   const buildNumber = osVersion.split(".")[2];
 
   function isWindows11() {
-    return buildNumber >= 22000;
+    return buildNumber >= 22631;
   }
 
   if (isWindows11()) {
@@ -455,13 +455,25 @@ document.getElementById("runBtn").addEventListener("click", async function () {
   try {
     const tmpDir = await tempDir();
     const dirPath = await join(tmpDir, "winscript");
-    const filePath = await join(dirPath, "winscript.bat");
+    const filePath = await join(dirPath, "winscript.ps1");
 
     await mkdir(dirPath, { recursive: true });
 
     await writeTextFile(filePath, textContent);
 
-    const command = new Command("cmd", ["/c", "start", "cmd", "/k", filePath]);
+    const command = new Command("cmd", [
+      "/c",
+      "start",
+      "wt",
+      "powershell",
+      "-NoProfile",
+      "-NoLogo",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      filePath,
+    ]);
+
     command
       .spawn()
       .then(() => console.log("Script executed successfully"))

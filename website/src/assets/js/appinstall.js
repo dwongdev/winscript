@@ -240,10 +240,10 @@ function appsInstallChocolatey() {
 
     const command =
       allUrls.length > 0
-        ? 'taskkill /f /im explorer.exe && start explorer.exe && start cmd /k "' +
+        ? `Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue | Start-Process explorer.exe | Start-Process cmd.exe -ArgumentList '/k ` +
           "choco install " +
           finalURL +
-          ' -y --force --ignorepackageexitcodes"'
+          ` -y --force --ignorepackageexitcodes"'`
         : "";
 
     // Display the final URL in the div
@@ -530,10 +530,10 @@ function appsInstallWinget() {
 
     const command =
       allUrls.length > 0
-        ? 'taskkill /f /im explorer.exe && start explorer.exe && start cmd /k "' +
-          "winget install " +
+        ? `Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue | Start-Process explorer.exe | Start-Process cmd.exe -ArgumentList '/k ` +
+          '"winget install ' +
           finalURL +
-          ' --accept-source-agreements --accept-package-agreements --force"'
+          ` --accept-source-agreements --accept-package-agreements --force"'`
         : "";
 
     // Display the final URL in the div
@@ -554,7 +554,7 @@ function appsInstallWinget() {
     installingApps.textContent = finalURL;
 
     const wingetUpgrade = document.getElementById("wingetUpgrade");
-    wingetUpgrade.textContent = `powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "$v = winget -v; if ([version]($v.TrimStart('v')) -lt [version]'1.7.0') { Write-Output 'Old winget version detected, upgrading...'; Set-Location $env:USERPROFILE; Invoke-WebRequest -Uri 'https://aka.ms/getwinget' -OutFile 'winget.msixbundle'; Add-AppPackage -ForceApplicationShutdown .\\winget.msixbundle; Remove-Item .\\winget.msixbundle } else { Write-Output 'Winget is already up to date, skipping upgrade.' }"`;
+    wingetUpgrade.textContent = `$v = winget -v; if ([version]($v.TrimStart('v')) -lt [version]'1.7.0') { Write-Output '-- - Old Winget version detected, upgrading.'; Set-Location $env:USERPROFILE; Invoke-WebRequest -Uri 'https://aka.ms/getwinget' -OutFile 'winget.msixbundle'; Add-AppPackage -ForceApplicationShutdown .\\winget.msixbundle; Remove-Item .\\winget.msixbundle } else { Write-Output 'Winget is already up to date, skipping upgrade.' }`;
 
     const manualList = document.getElementById("manualList");
     if (window.manualURLs.length > 0) {

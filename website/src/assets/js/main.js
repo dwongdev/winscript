@@ -201,7 +201,7 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
   var blob = new Blob([textContent], { type: "text/plain" });
   var link = document.createElement("a");
   link.href = window.URL.createObjectURL(blob);
-  link.download = "winscript.bat";
+  link.download = "winscript.ps1";
 
   document.body.appendChild(link);
   link.click();
