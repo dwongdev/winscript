@@ -19,7 +19,7 @@ WinScript allows you to remove any pre-installed bloatware and unnecessary compo
 You can disable app access to sensitive data, prevent background syncing of themes and passwords, and stop usage tracking like activity feeds, screen recording, and location-based services. The Telemetry section allows you to shut down Microsoft’s data collection of Windows, Office, updates, search, and feedback. You can disable 3rd-party apps data collection (Adobe, VS Code, Google, Nvidia etc), disable cloud-based speech recognition, DRM connectivity, and biometric services & much more.
 
 ### ⚡ Performance
-You can enable the Ultimate Performance power plan, set background services to manual startup, reduce mouse input delays, and disable features like Superfetch, HAGS, Storage Sense, Windows Search Indexing, and Hibernation. It also allows you to fine-tune security settings for better performance limiting Windows Defender’s CPU usage, disabling Core Isolation & more.
+You can enable the Ultimate Performance power plan, set background services to manual startup, reduce mouse input delays, and disable features like Superfetch, HAGS, Storage Sense, Windows Search Indexing, and Hibernation. It also allows you to fine-tune security settings for better performance by limiting Windows Defender’s CPU usage, disabling Core Isolation & more.
 
 ### 📦 App Installer
 The Browse Apps section in WinScript makes it easy to bulk install all your essential software in just a few clicks. Choose from a list of popular apps—browsers, utilities, dev tools, media players, and more, and WinScript will generate a script to install them automatically using your preferred package manager: Chocolatey or Winget.
@@ -41,6 +41,40 @@ irm "https://winscript.cc/irm" | iex
 ```
 winget install winscript
 ```
+
+## Usage
+
+### 📋 Prerequisites
+
+- NodeJS (LTS)
+```
+winget install --id OpenJS.NodeJS.LTS
+```
+
+- Rust & Cargo
+```
+winget install --id Rustlang.Rustup
+```
+
+### 🛠️ How to build
+
+- Clone the repository
+```
+git clone https://github.com/flick9000/winscript.git
+cd winscript/app
+```
+
+- Install dependencies
+```
+npm install
+```
+
+- Build the app
+```
+npm run tauri build
+```
+
+After the build process completes, the compiled executable will be available inside the app/src-tauri/target/release directory.
 
 ## Support
 
@@ -65,3 +99,5 @@ If you find this project helpful, consider supporting it by [buying me a coffee!
 ## License
 
 📒 This project is licensed under the GPL v3 License. See the [LICENSE](LICENSE) file for more details.
+
+
