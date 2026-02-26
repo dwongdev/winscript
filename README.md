@@ -74,7 +74,7 @@ npm install
 npm run tauri build
 ```
 
-After the build process completes, the compiled executable will be available inside the app/src-tauri/target/release directory.
+After building, the compiled executable will be available inside the src-tauri/target/release directory.
 
 ## Support
 
@@ -99,5 +99,6 @@ If you find this project helpful, consider supporting it by [buying me a coffee!
 ## License
 
 📒 This project is licensed under the GPL v3 License. See the [LICENSE](LICENSE) file for more details.
+
 
 
